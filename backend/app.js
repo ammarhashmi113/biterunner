@@ -25,11 +25,9 @@ app.use(
 );
 
 // Only start the server after DB connection is successful
+mongoose;
 mongoose
-    .connect(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    })
+    .connect(process.env.MONGO_URI)
     .then(() => {
         console.log("✅ MongoDB connected");
 
