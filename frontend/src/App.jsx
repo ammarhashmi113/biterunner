@@ -1,0 +1,181 @@
+import {
+    Navigate,
+    BrowserRouter as Router,
+    Routes,
+    Route,
+} from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Toaster } from "react-hot-toast";
+
+import api from "./utils/axiosConfig"; // axiosConfig sets base url and adds an interceptor to add the JWT token to every request
+
+// Bootstrap for styling
+// import "bootstrap/dist/css/bootstrap.min.css";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
+
+// Contexts
+import { UserContext } from "./contexts/userContext";
+import { CartProvider } from "./contexts/CartContext";
+
+// Components
+import Navbar from "./components/Navbar/Navbar";
+import RequireAdmin from "./components/RequireAdmin/RequireAdmin";
+import RestrictAdmin from "./components/RestrictAdmin/RestrictAdmin";
+import RequireUser from "./components/RequireUser/RequireUser";
+
+// Pages
+import Login from "./pages/Auth/Login/Login";
+import Register from "./pages/Auth/Register/Register";
+import MenuPage from "./pages/Menu/MenuPage";
+import AdminDashboard from "./pages/Admin/AdminDashboard";
+import AdminMenuManagerPage from "./pages/Admin/AdminMenuManagerPage";
+import AdminOrderManagerPage from "./pages/Admin/AdminOrderManagerPage";
+import CartPage from "./pages/CartPage/CartPage";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import OrderConfirmationPage from "./pages/OrderConfirmationPage/OrderConfirmationPage";
+import MyOrdersPage from "./pages/MyOrdersPage/MyOrdersPage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import ChangePasswordPage from "./pages/ChangePasswordPage/ChangePasswordPage";
+
+function App() {
+    const [user, setUser] = useState(null);
+    const [userLoading, setUserLoading] = useState(true);
+    const fetchCurrentUser = async () => {
+        try {
+            const res = await api.get("/auth/me");
+            setUser(res.data.user);
+        } catch {
+            localStorage.removeItem("token");
+            setUser(null);
+        } finally {
+            setUserLoading(false);
+
+            // // Force minimum loading duration for UX (TEST)
+            // setTimeout(() => {
+            //     setUserLoading(false);
+            // }, 800); // 800ms delay
+        }
+    };
+    // Auto-login on refresh
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (token) {
+            fetchCurrentUser();
+        } else {
+            setUserLoading(false); // No token? Not loading user
+        }
+    }, []);
+    return (
+        <Router>
+            <UserContext.Provider value={{ user, setUser, userLoading }}>
+                <CartProvider>
+                    <Toaster position="top-center" reverseOrder={false} />
+
+                    <Navbar />
+
+                    <Routes>
+                        <Route path="/" element={<Navigate to="/menu" />} />
+                        <Route
+                            path="/login"
+                            element={user ? <Navigate to="/menu" /> : <Login />}
+                        />
+                        <Route
+                            path="/register"
+                            element={
+                                user ? <Navigate to="/menu" /> : <Register />
+                            }
+                        />
+                        <Route
+                            path="/change-password"
+                            element={
+                                !user ? (
+                                    <Navigate to="/login" />
+                                ) : (
+                                    <ChangePasswordPage />
+                                )
+                            }
+                        />
+                        <Route
+                            path="/profile"
+                            element={
+                                !user ? (
+                                    <Navigate to="/login" />
+                                ) : (
+                                    <ProfilePage />
+                                )
+                            }
+                        />
+                        <Route path="/menu" element={<MenuPage />} />
+                        <Route
+                            path="/cart"
+                            element={
+                                <RestrictAdmin>
+                                    <CartPage />
+                                </RestrictAdmin>
+                            }
+                        />
+                        <Route
+                            path="/checkout"
+                            element={
+                                <RequireUser>
+                                    <CheckoutPage />
+                                </RequireUser>
+                            }
+                        />
+                        <Route
+                            path="/my-orders"
+                            element={
+                                <RequireUser>
+                                    <MyOrdersPage />
+                                </RequireUser>
+                            }
+                        />
+
+                        <Route
+                            path="/orders/:id"
+                            element={
+                                <RequireUser>
+                                    <OrderConfirmationPage />
+                                </RequireUser>
+                            }
+                        />
+                        <Route
+                            path="/admin/menu-management"
+                            element={
+                                <RequireAdmin>
+                                    <AdminMenuManagerPage />
+                                </RequireAdmin>
+                            }
+                        />
+                        <Route
+                            path="/admin/order-management"
+                            element={
+                                <RequireAdmin>
+                                    <AdminOrderManagerPage />
+                                </RequireAdmin>
+                            }
+                        />
+                        <Route
+                            path="/admin"
+                            element={
+                                <RequireAdmin>
+                                    <AdminDashboard />
+                                </RequireAdmin>
+                            }
+                        />
+                        <Route
+                            path="*"
+                            element={
+                                <div className="text-center py-10 text-red-600">
+                                    404 - Page Not Found
+                                </div>
+                            }
+                        />
+                    </Routes>
+                </CartProvider>
+            </UserContext.Provider>
+        </Router>
+    );
+}
+
+export default App;
