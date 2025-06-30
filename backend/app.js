@@ -16,6 +16,7 @@ const AppError = require("./utils/AppError");
 // Cors Settings
 const allowedOrigins = [
     "http://localhost:5173", // Local frontend URL
+    "https://biterunner.vercel.app", // Deployed frontend
 ];
 app.use(
     cors({
