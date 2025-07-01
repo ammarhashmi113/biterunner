@@ -46,6 +46,11 @@ app.use(express.json());
 
 // Routes
 
+// To keep Render API awake using UptimeRobot
+app.get("/api/ping", (req, res) => {
+    res.status(200).send("pong");
+});
+
 // Auth Routes
 app.use("/api/auth", authRoutes);
 
