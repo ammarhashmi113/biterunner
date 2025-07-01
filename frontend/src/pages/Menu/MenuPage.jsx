@@ -1,4 +1,4 @@
-// components/MenuPage.jsx
+// // components/MenuPage.jsx
 import { useEffect, useState, useContext } from "react";
 import api from "../../utils/axiosConfig";
 import { Utensils } from "lucide-react";
@@ -13,7 +13,7 @@ const MenuPage = () => {
     const [menuItems, setMenuItems] = useState([]);
     const [categories, setCategories] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [selectedItemId, setSelectedItemId] = useState(null);
+    const [selectedItem, setSelectedItem] = useState(null); // <== now store item directly
 
     useEffect(() => {
         const fetchData = async () => {
@@ -61,7 +61,6 @@ const MenuPage = () => {
             </div>
 
             {loading ? (
-                // <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
                     {Array(8)
                         .fill(0)
@@ -79,17 +78,17 @@ const MenuPage = () => {
                             title={group.name}
                             imageUrl={group.imageUrl}
                             items={group.items}
-                            onSelect={setSelectedItemId}
+                            onSelect={setSelectedItem} // <== Pass full item here
                             isAdmin={user?.role === "admin"}
                         />
                     );
                 })
             )}
 
-            {selectedItemId && (
+            {selectedItem && (
                 <MenuModal
-                    menuId={selectedItemId}
-                    onClose={() => setSelectedItemId(null)}
+                    item={selectedItem} // <== Pass the item, not the ID
+                    onClose={() => setSelectedItem(null)}
                     isAdmin={user?.role === "admin"}
                 />
             )}
