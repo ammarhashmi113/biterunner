@@ -1,6 +1,8 @@
 // components/MenuPage/MenuCategorySection.jsx
 import MenuCard from "./MenuCard/MenuCard";
 
+import { getOptimizedImageUrl } from "../../../utils/getOptimizedImageUrl"; // for getting compressed image
+
 const MenuCategorySection = ({ title, imageUrl, items, onSelect, isAdmin }) => {
     return (
         <section className="mb-12">
@@ -17,7 +19,7 @@ const MenuCategorySection = ({ title, imageUrl, items, onSelect, isAdmin }) => {
 
             <div className="relative w-full aspect-[16/5] sm:h-64 mb-6 rounded-sm overflow-hidden shadow">
                 <img
-                    src={imageUrl}
+                    src={getOptimizedImageUrl(imageUrl, 800)}
                     alt={title}
                     className="w-full h-full object-cover brightness-60"
                 />
