@@ -3,7 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import api from "../../../utils/axiosConfig";
 import { useUser } from "../../../contexts/userContext";
 import { toast } from "react-hot-toast";
-import { Eye, EyeOff, Mail, Lock, User, Phone } from "lucide-react"; // icons
+import { Eye, EyeOff, Mail, Lock, User, Phone, Loader2 } from "lucide-react"; // icons
 
 const Register = () => {
     const navigate = useNavigate();
@@ -19,6 +19,7 @@ const Register = () => {
 
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -26,6 +27,7 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
 
         if (form.password !== form.confirmPassword) {
             toast.error("Passwords do not match");
@@ -42,6 +44,8 @@ const Register = () => {
             navigate("/menu");
         } catch (err) {
             toast.error(err.response?.data?.error || "Registration failed");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -161,9 +165,18 @@ const Register = () => {
 
                 <button
                     type="submit"
-                    className="w-full bg-red-500 text-white py-2 rounded hover:bg-red-600"
+                    disabled={loading}
+                    className={`w-full flex justify-center items-center gap-2 bg-red-500 text-white py-2 rounded transition cursor-pointer
+        ${loading ? "opacity-60 cursor-not-allowed" : "hover:bg-red-600"}`}
                 >
-                    Register
+                    {loading ? (
+                        <>
+                            <Loader2 className="animate-spin" size={18} />
+                            Registering...
+                        </>
+                    ) : (
+                        "Register"
+                    )}
                 </button>
             </form>
             <p className="text-sm text-center mt-4 text-gray-500">

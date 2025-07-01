@@ -133,7 +133,7 @@ const CheckoutPage = () => {
                 <button
                     onClick={placeOrder}
                     disabled={isPlacingOrder}
-                    className={`w-full py-3 font-semibold rounded-4xl transition duration-200 flex items-center justify-center gap-2 ${
+                    className={`w-full py-3 font-semibold rounded-4xl transition duration-200 flex items-center justify-center gap-2 cursor-pointer ${
                         isPlacingOrder
                             ? "bg-red-400 text-white cursor-not-allowed"
                             : "bg-red-500 text-white hover:bg-red-600"

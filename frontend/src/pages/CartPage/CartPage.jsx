@@ -88,7 +88,7 @@ const CartPage = () => {
                                         Math.max(1, item.quantity - 1)
                                     )
                                 }
-                                className="p-1 bg-gray-200 rounded hover:bg-gray-300"
+                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer"
                             >
                                 <Minus size={16} />
                             </button>
@@ -99,13 +99,13 @@ const CartPage = () => {
                                 onClick={() =>
                                     updateQuantity(item._id, item.quantity + 1)
                                 }
-                                className="p-1 bg-gray-200 rounded hover:bg-gray-300"
+                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer"
                             >
                                 <Plus size={16} />
                             </button>
                             <button
                                 onClick={() => removeFromCart(item._id)}
-                                className="ml-4 flex items-center gap-1 text-red-600 hover:underline text-sm"
+                                className="ml-4 flex items-center gap-1 text-red-600 hover:underline text-sm cursor-pointer"
                             >
                                 <Trash2 size={16} />
                                 Remove
@@ -135,7 +135,7 @@ const CartPage = () => {
             <div className="flex justify-end mt-2 mb-2">
                 <button
                     onClick={() => setShowModal(true)}
-                    className="flex items-center gap-2 px-2 py-1.5 text-sm text-red-600 bg-red-100 rounded-4xl hover:bg-red-200 transition"
+                    className="flex items-center gap-2 px-2 py-1.5 text-sm text-red-600 bg-red-100 rounded-4xl hover:bg-red-200 transition cursor-pointer"
                 >
                     <BrushCleaning size={16} />
                     Clear Cart
@@ -144,14 +144,14 @@ const CartPage = () => {
             <div className="mt-8 flex flex-col sm:flex-row gap-3">
                 <button
                     onClick={() => navigate("/checkout")}
-                    className="flex-1 bg-red-500 text-white py-2 rounded-4xl hover:bg-orange-700 transition flex items-center justify-center gap-2"
+                    className="flex-1 bg-red-500 text-white py-2 rounded-4xl hover:bg-orange-700 transition flex items-center justify-center gap-2 cursor-pointer   "
                 >
                     <ArrowRightCircle size={18} />
                     Proceed to Checkout
                 </button>
                 <button
                     onClick={() => navigate("/menu")}
-                    className="flex-1 border border-orange-600 text-orange-600 py-2 rounded-4xl hover:bg-orange-50 transition flex items-center justify-center gap-2"
+                    className="flex-1 border border-orange-600 text-orange-600 py-2 rounded-4xl hover:bg-orange-50 transition flex items-center justify-center gap-2 cursor-pointer"
                 >
                     <ShoppingBag size={18} />
                     Continue Shopping

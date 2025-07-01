@@ -135,14 +135,14 @@ const ProfilePage = () => {
                         <>
                             <button
                                 onClick={() => setEditing(true)}
-                                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-4xl hover:bg-blue-700"
+                                className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-4xl hover:bg-blue-700 cursor-pointer"
                             >
                                 <Pencil size={16} />
                                 Edit Profile
                             </button>
                             <button
                                 onClick={() => navigate("/change-password")}
-                                className="flex items-center gap-1 text-sm text-blue-600 hover:underline"
+                                className="flex items-center gap-1 text-sm text-blue-600 hover:underline cursor-pointer"
                             >
                                 <KeyRound size={16} />
                                 Change Password
@@ -152,7 +152,7 @@ const ProfilePage = () => {
                         <>
                             <button
                                 onClick={handleUpdate}
-                                className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-4xl hover:bg-green-700"
+                                className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-4xl hover:bg-green-700 cursor-pointer"
                             >
                                 <Save size={16} />
                                 Save Changes
@@ -165,7 +165,7 @@ const ProfilePage = () => {
                                         phoneNumber: user.phoneNumber || "",
                                     });
                                 }}
-                                className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-4xl hover:bg-gray-100"
+                                className="flex items-center gap-2 px-4 py-2 border border-gray-300 rounded-4xl hover:bg-gray-100 cursor-pointer"
                             >
                                 <XCircle size={16} />
                                 Cancel

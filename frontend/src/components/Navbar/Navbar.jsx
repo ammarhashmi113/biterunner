@@ -201,7 +201,7 @@ const Navbar = () => {
                     <div className="md:hidden mt-3">
                         <button
                             onClick={() => setMenuOpen((prev) => !prev)}
-                            className="text-gray-700 hover:text-green-600"
+                            className="text-gray-700 hover:text-green-600 cursor-pointer"
                         >
                             <MenuIcon size={24} />
                         </button>

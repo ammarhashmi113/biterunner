@@ -8,6 +8,7 @@ import {
     BrushCleaning,
     ShoppingBag,
     ShoppingCart,
+    X,
     Plus,
     Minus,
     Wallet,
@@ -82,9 +83,9 @@ const CartSidebar = ({ isOpen, onClose }) => {
                     <button
                         onClick={onClose}
                         aria-label="Close cart"
-                        className="text-2xl font-bold text-gray-600 hover:text-gray-800"
+                        className="text-2xl font-bold text-gray-600 hover:text-gray-800 cursor-pointer"
                     >
-                        ×
+                        <X />
                     </button>
                 </header>
 
@@ -129,7 +130,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                                         )
                                                     )
                                                 }
-                                                className="p-1 bg-gray-200 rounded hover:bg-gray-300"
+                                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer"
                                                 aria-label={`Decrease quantity of ${item.name}`}
                                             >
                                                 <Minus size={16} />
@@ -146,7 +147,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                                         item.quantity + 1
                                                     )
                                                 }
-                                                className="p-1 bg-gray-200 rounded hover:bg-gray-300"
+                                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer"
                                                 aria-label={`Increase quantity of ${item.name}`}
                                             >
                                                 <Plus size={16} />
@@ -157,7 +158,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                             onClick={() =>
                                                 removeFromCart(item._id)
                                             }
-                                            className="p-2 rounded bg-red-100 text-red-700 hover:bg-red-200 transition"
+                                            className="p-2 rounded bg-red-100 text-red-700 hover:bg-red-200 transition cursor-pointer"
                                             aria-label={`Remove ${item.name} from cart`}
                                         >
                                             <TrashIcon className="h-5 w-5" />
@@ -201,7 +202,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                             {/* Clear Cart */}
                             <button
                                 disabled={cartItems.length === 0}
-                                className="flex items-center gap-2 px-2 py-1.5 text-sm text-red-600 bg-red-100 rounded-4xl hover:bg-red-200 transition"
+                                className="flex items-center gap-2 px-2 py-1.5 text-sm text-red-600 bg-red-100 rounded-4xl hover:bg-red-200 transition cursor-pointer"
                                 onClick={() => setShowModal(true)}
                             >
                                 <BrushCleaning size={16} />
@@ -216,7 +217,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                             onClose();
                             navigate("/cart");
                         }}
-                        className="w-full mt-8 mb-2 py-2 border border-orange-600 text-orange-600 rounded-4xl hover:bg-orange-50 transition flex items-center justify-center gap-2"
+                        className="w-full mt-8 mb-2 py-2 border border-orange-600 text-orange-600 rounded-4xl hover:bg-orange-50 transition flex items-center justify-center gap-2 cursor-pointer"
                     >
                         <ClipboardList size={18} />
                         View Full Cart
@@ -225,7 +226,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                     {/* Checkout */}
                     <button
                         disabled={cartItems.length === 0}
-                        className={`w-full py-2 rounded-4xl text-white font-semibold transition flex items-center justify-center gap-2 ${
+                        className={`w-full py-2 rounded-4xl text-white font-semibold transition flex items-center justify-center gap-2 cursor-pointer ${
                             cartItems.length === 0
                                 ? "bg-gray-400 cursor-not-allowed"
                                 : "bg-red-500 hover:bg-orange-700"
