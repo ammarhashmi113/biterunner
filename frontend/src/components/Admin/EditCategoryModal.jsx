@@ -1,7 +1,7 @@
 import { useState } from "react";
 import api from "../../utils/axiosConfig";
 import { toast } from "react-hot-toast";
-import { Tag, ListOrdered, X, Save } from "lucide-react";
+import { Tag, ListOrdered, X, Save, Loader2 } from "lucide-react";
 
 import ImageUploader from "../ImageUploader/ImageUploader";
 
@@ -121,7 +121,7 @@ const EditCategoryModal = ({ category, onClose, onCategoryUpdated }) => {
                         <button
                             type="button"
                             onClick={onClose}
-                            className="px-4 py-2 flex items-center gap-1 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-4xl"
+                            className="px-4 py-2 flex items-center gap-1 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-4xl cursor-pointer"
                         >
                             <X size={16} />
                             Cancel
@@ -131,14 +131,26 @@ const EditCategoryModal = ({ category, onClose, onCategoryUpdated }) => {
                             disabled={
                                 loading || (!formData.imageUrl && !selectedFile)
                             }
-                            className={`px-4 py-2 flex items-center gap-1 text-white rounded-4xl ${
+                            className={`px-4 py-2 flex items-center gap-1 text-white rounded-4xl cursor-pointer ${
                                 loading
                                     ? "bg-green-400 cursor-not-allowed"
                                     : "bg-green-600 hover:bg-green-700"
                             }`}
                         >
-                            <Save size={16} />
-                            {loading ? "Saving..." : "Update"}
+                            {loading ? (
+                                <>
+                                    <Loader2
+                                        size={18}
+                                        className="animate-spin"
+                                    />
+                                    Saving
+                                </>
+                            ) : (
+                                <>
+                                    <Save size={16} />
+                                    Update
+                                </>
+                            )}
                         </button>
                     </div>
                 </form>
@@ -146,7 +158,7 @@ const EditCategoryModal = ({ category, onClose, onCategoryUpdated }) => {
                 {/* Top-right close button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-3 right-4 text-gray-500 hover:text-gray-700"
+                    className="absolute top-3 right-4 text-gray-500 hover:text-gray-700 cursor-pointer"
                     aria-label="Close modal"
                 >
                     <X size={20} />

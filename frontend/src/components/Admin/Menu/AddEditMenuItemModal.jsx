@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { X, PlusCircle, Pencil } from "lucide-react";
-import MenuItemForm from "./MenuItemForm";
+import AddEditMenuItemForm from "./AddEditMenuItemForm";
 
 const AddEditMenuItemModal = ({ isOpen, onClose, initialData, onSubmit }) => {
     useEffect(() => {
@@ -33,7 +33,7 @@ const AddEditMenuItemModal = ({ isOpen, onClose, initialData, onSubmit }) => {
             >
                 {/* Close Button */}
                 <button
-                    className="absolute top-3 right-4 text-gray-500 hover:text-black"
+                    className="absolute top-3 right-4 text-gray-500 hover:text-black cursor-pointer"
                     onClick={onClose}
                     aria-label="Close Modal"
                 >
@@ -54,7 +54,7 @@ const AddEditMenuItemModal = ({ isOpen, onClose, initialData, onSubmit }) => {
 
                 {/* Form */}
                 <div className="px-6 py-4 w-full max-h-[80vh] overflow-y-auto">
-                    <MenuItemForm
+                    <AddEditMenuItemForm
                         initialData={initialData}
                         onClose={onClose}
                         onSubmit={onSubmit}

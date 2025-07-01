@@ -64,7 +64,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
             {/* Sidebar */}
             <aside
-                className={`fixed top-0 right-0 h-full w-96 bg-white shadow-lg transform transition-transform duration-300 flex flex-col ${
+                className={`fixed top-0 right-0 h-full max-w-full w-[90vw] sm:w-96 bg-white shadow-lg transform transition-transform duration-300 flex flex-col ${
                     isOpen ? "translate-x-0" : "translate-x-full"
                 }`}
                 role="dialog"
@@ -130,7 +130,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                                         )
                                                     )
                                                 }
-                                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer"
+                                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 rounded-4xl cursor-pointer"
                                                 aria-label={`Decrease quantity of ${item.name}`}
                                             >
                                                 <Minus size={16} />
@@ -147,7 +147,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
                                                         item.quantity + 1
                                                     )
                                                 }
-                                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer"
+                                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 rounded-4xl cursor-pointer"
                                                 aria-label={`Increase quantity of ${item.name}`}
                                             >
                                                 <Plus size={16} />

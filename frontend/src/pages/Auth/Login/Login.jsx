@@ -98,7 +98,7 @@ const Login = () => {
                     {loading ? (
                         <>
                             <Loader2 className="animate-spin" size={18} />
-                            Logging in...
+                            Logging in
                         </>
                     ) : (
                         "Login"

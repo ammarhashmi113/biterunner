@@ -88,18 +88,18 @@ const CartPage = () => {
                                         Math.max(1, item.quantity - 1)
                                     )
                                 }
-                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer"
+                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 rounded-4xl cursor-pointer"
                             >
                                 <Minus size={16} />
                             </button>
-                            <span className="min-w-[24px] text-center">
+                            <span className="min-w-[10px] text-center">
                                 {item.quantity}
                             </span>
                             <button
                                 onClick={() =>
                                     updateQuantity(item._id, item.quantity + 1)
                                 }
-                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 cursor-pointer"
+                                className="p-1 bg-gray-200 rounded hover:bg-gray-300 rounded-4xl cursor-pointer"
                             >
                                 <Plus size={16} />
                             </button>

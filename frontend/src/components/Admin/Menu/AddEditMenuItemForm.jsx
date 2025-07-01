@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import api from "../../../utils/axiosConfig";
 import { toast } from "react-hot-toast";
-import CategoryDropdown from "./CategoryDropdown";
 
 import {
     Utensils,
@@ -17,7 +16,7 @@ import {
 
 import ImageUploader from "../../ImageUploader/ImageUploader";
 
-const MenuItemForm = ({ initialData = {}, onSubmit, onClose, loading }) => {
+const MenuItemForm = ({ initialData = {}, onSubmit, onClose }) => {
     const [formData, setFormData] = useState({
         name: "",
         description: "",
@@ -28,6 +27,7 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose, loading }) => {
     const [selectedFile, setSelectedFile] = useState(null);
     const [categories, setCategories] = useState([]);
     const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         if (initialData) {
@@ -64,6 +64,7 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose, loading }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
+        setLoading(true);
 
         try {
             let imageUrl = formData.imageUrl;
@@ -100,6 +101,8 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose, loading }) => {
         } catch (err) {
             setError(err?.response?.data?.error || "Something went wrong.");
             toast.error("Failed to save menu item.");
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -163,24 +166,31 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose, loading }) => {
             </div>
 
             {/* Category */}
+            <span className="text-sm text-gray-500 px-0.5">Category</span>
             <div className="relative">
-                {/* <FolderOpen
+                <FolderOpen
                     className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
                     size={18}
                 />
+                <select
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    className="w-full bg-gray-100 rounded-xl px-10 py-2 focus:outline-none focus:ring-1 focus:ring-green-500 appearance-none cursor-pointer"
+                    required
+                >
+                    <option value="" disabled>
+                        Select a category
+                    </option>
+                    {categories.map((cat) => (
+                        <option key={cat._id} value={cat._id}>
+                            {cat.name}
+                        </option>
+                    ))}
+                </select>
                 <ChevronDown
                     className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"
                     size={18}
-                /> */}
-                <CategoryDropdown
-                    categories={categories}
-                    selectedId={formData.category}
-                    onChange={(value) =>
-                        setFormData((prev) => ({
-                            ...prev,
-                            category: value,
-                        }))
-                    }
                 />
             </div>
 
@@ -195,7 +205,7 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose, loading }) => {
                 <button
                     type="button"
                     onClick={onClose}
-                    className="flex items-center gap-1 bg-gray-200 text-gray-700 px-4 py-2 rounded-4xl hover:bg-gray-300"
+                    className="flex items-center gap-1 bg-gray-200 text-gray-700 px-4 py-2 rounded-4xl hover:bg-gray-300 cursor-pointer"
                 >
                     <XCircle size={18} />
                     Cancel
@@ -203,7 +213,7 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose, loading }) => {
                 <button
                     type="submit"
                     disabled={loading || (!formData.imageUrl && !selectedFile)}
-                    className={`flex items-center gap-1 px-4 py-2 text-white rounded-4xl ${
+                    className={`flex items-center gap-1 px-4 py-2 text-white rounded-4xl cursor-pointer ${
                         loading
                             ? "bg-green-400 cursor-not-allowed"
                             : "bg-green-600 hover:bg-green-700"
@@ -212,7 +222,7 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose, loading }) => {
                     {loading ? (
                         <>
                             <Loader2 size={18} className="animate-spin" />
-                            Saving...
+                            Saving
                         </>
                     ) : initialData?._id ? (
                         <>

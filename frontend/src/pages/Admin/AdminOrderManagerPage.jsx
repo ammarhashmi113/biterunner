@@ -119,7 +119,7 @@ const AdminOrderManagerPage = () => {
                     >
                         <button
                             onClick={() => toggleGroup(status)}
-                            className="w-full text-left px-5 py-4 bg-gray-100 hover:bg-gray-200 flex justify-between items-center font-semibold rounded-t-xl"
+                            className="w-full text-left px-5 py-4 bg-gray-100 hover:bg-gray-200 flex justify-between items-center font-semibold rounded-t-xl cursor-pointer"
                         >
                             <span className="flex items-center gap-2">
                                 {statusLabels[status]} ({filtered.length})
@@ -208,7 +208,7 @@ const AdminOrderManagerPage = () => {
                                                         e.target.value
                                                     )
                                                 }
-                                                className="border border-gray-300 text-sm px-3 py-1.5 rounded-md bg-white focus:outline-none focus:ring-1 focus:ring-blue-400"
+                                                className="border border-gray-300 text-sm px-3 py-1.5 rounded-md bg-white focus:outline-none focus:ring-1 focus:ring-blue-400 cursor-pointer"
                                             >
                                                 {statusOptions.map((s) => (
                                                     <option key={s} value={s}>

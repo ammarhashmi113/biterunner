@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useCart } from "../../../contexts/CartContext";
+import { Minus, Plus } from "lucide-react";
 
 const MenuModal = ({ item, onClose, isAdmin }) => {
     const [quantity, setQuantity] = useState(1);
@@ -57,18 +58,18 @@ const MenuModal = ({ item, onClose, isAdmin }) => {
                                     onClick={() =>
                                         setQuantity((q) => Math.max(1, q - 1))
                                     }
-                                    className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                                    className="px-1 py-1 bg-gray-200 rounded-4xl hover:bg-gray-300 cursor-pointer"
                                 >
-                                    -
+                                    <Minus size={16} />
                                 </button>
                                 <span className="min-w-[24px] text-center">
                                     {quantity}
                                 </span>
                                 <button
                                     onClick={() => setQuantity((q) => q + 1)}
-                                    className="px-3 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                                    className="px-1 py-1 bg-gray-200 rounded-4xl hover:bg-gray-300 cursor-pointer"
                                 >
-                                    +
+                                    <Plus size={16} />
                                 </button>
                             </div>
                         )}
@@ -77,7 +78,7 @@ const MenuModal = ({ item, onClose, isAdmin }) => {
                     {!isAdmin && (
                         <button
                             onClick={handleAddToCart}
-                            className="w-full py-2 bg-red-500 text-white font-medium rounded hover:bg-red-700 transition rounded-xl"
+                            className="w-full py-2 bg-red-500 text-white font-medium rounded hover:bg-red-700 transition rounded-xl cursor-pointer"
                         >
                             Add to Cart
                         </button>

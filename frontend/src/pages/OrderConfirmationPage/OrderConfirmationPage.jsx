@@ -11,6 +11,7 @@ import {
     ChefHat,
     RefreshCcw,
     ClipboardList,
+    Loader2,
 } from "lucide-react";
 
 const OrderConfirmationPage = () => {
@@ -36,7 +37,13 @@ const OrderConfirmationPage = () => {
 
     if (loading)
         return (
-            <div className="text-center py-10 text-gray-600">Loading...</div>
+            <div className="text-center py-10 mx-auto w-fit mt-35">
+                <Loader2
+                    size={18}
+                    className="animate-spin mx-auto w-fit text-blue-500"
+                />
+                <p>Loading Details</p>
+            </div>
         );
 
     if (!order)
@@ -153,7 +160,7 @@ const OrderConfirmationPage = () => {
                 </Link>
                 <button
                     onClick={handleReorder}
-                    className="px-4 py-2 bg-red-500 text-white rounded-4xl hover:bg-orange-700 transition text-center flex items-center gap-2"
+                    className="px-4 py-2 bg-red-500 text-white rounded-4xl hover:bg-orange-700 transition text-center flex items-center gap-2 cursor-pointer"
                 >
                     <RefreshCcw size={16} />
                     Order Again

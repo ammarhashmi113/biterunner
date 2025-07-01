@@ -12,6 +12,7 @@ import {
     Save,
     XCircle,
     KeyRound,
+    Loader2,
 } from "lucide-react";
 
 const ProfilePage = () => {
@@ -58,7 +59,16 @@ const ProfilePage = () => {
         }
     };
 
-    if (loading) return <div className="text-center py-10">Loading...</div>;
+    if (loading)
+        return (
+            <div className="text-center py-10 mx-auto w-fit mt-35">
+                <Loader2
+                    size={18}
+                    className="animate-spin mx-auto w-fit text-blue-500"
+                />
+                <p>Loading Details</p>
+            </div>
+        );
     if (!user)
         return (
             <div className="text-center py-10 text-red-500">

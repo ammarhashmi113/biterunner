@@ -172,7 +172,7 @@ const Register = () => {
                     {loading ? (
                         <>
                             <Loader2 className="animate-spin" size={18} />
-                            Registering...
+                            Registering
                         </>
                     ) : (
                         "Register"

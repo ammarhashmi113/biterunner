@@ -47,7 +47,7 @@ const MenuItemCard = ({ item, onEdit, onDeleteSuccess }) => {
                 <div className="flex gap-2 mt-3">
                     <button
                         onClick={onEdit}
-                        className="flex-1 flex items-center justify-center gap-1 bg-blue-600 text-white py-1.5 px-3 rounded-4xl hover:bg-blue-700"
+                        className="flex-1 flex items-center justify-center gap-1 bg-blue-600 text-white py-1 px-1 rounded-xl hover:bg-blue-700 cursor-pointer"
                     >
                         <Pencil size={16} />
                         Edit
@@ -56,7 +56,7 @@ const MenuItemCard = ({ item, onEdit, onDeleteSuccess }) => {
                     <button
                         onClick={() => setShowDeleteModal(true)}
                         disabled={deleting}
-                        className="flex-1 flex items-center justify-center gap-1 bg-red-600 text-white py-1.5 px-3 rounded-4xl hover:bg-red-700 disabled:opacity-50"
+                        className="flex-1 flex items-center justify-center gap-1 bg-red-600 text-white py-1 px-1 rounded-xl hover:bg-red-700 disabled:opacity-50 cursor-pointer"
                     >
                         <Trash2 size={16} />
                         {deleting ? "Deleting..." : "Delete"}

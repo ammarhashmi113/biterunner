@@ -12,6 +12,8 @@ import {
     Clock,
 } from "lucide-react";
 
+import MyOrdersCardSkeleton from "./MyOrdersCardSkeleton";
+
 const statusLabels = {
     pending: "Pending",
     accepted: "Accepted",
@@ -52,7 +54,19 @@ const MyOrdersPage = () => {
         order.items.reduce((sum, i) => sum + i.quantity * i.menuItem.price, 0);
 
     if (loading)
-        return <div className="text-center py-10">Loading orders...</div>;
+        return (
+            <div className="max-w-4xl mx-auto px-4 py-8">
+                <h1 className="text-3xl font-bold mb-6 text-gray-800 flex items-center gap-2">
+                    <ClipboardList size={28} />
+                    My Orders
+                </h1>
+                <div className="space-y-6">
+                    {[...Array(3)].map((_, i) => (
+                        <MyOrdersCardSkeleton key={i} />
+                    ))}
+                </div>
+            </div>
+        );
 
     if (orders.length === 0)
         return (
