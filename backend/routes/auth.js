@@ -48,7 +48,7 @@ router.post(
     "/register",
     validateWithJoi(userSchema),
     catchAsync(async (req, res, next) => {
-        const { username, email, password, phoneNumber, role } = req.body;
+        const { username, email, password, phoneNumber } = req.body;
 
         const emailExists = await User.findOne({ email });
         if (emailExists) {
@@ -59,6 +59,11 @@ router.post(
         if (usernameExists) {
             return next(new AppError("Username already in use", 400));
         }
+
+        // Determine role based on .env admin emails
+        const adminEmails =
+            process.env.ADMIN_EMAILS?.split(",").map((e) => e.trim()) || [];
+        const role = adminEmails.includes(email) ? "admin" : "user";
 
         const user = new User({ username, email, password, phoneNumber, role });
         await user.save();
