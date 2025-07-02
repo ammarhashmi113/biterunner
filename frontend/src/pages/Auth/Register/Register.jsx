@@ -108,11 +108,13 @@ const Register = () => {
                         className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600"
                         tabIndex={-1}
                     >
-                        {showPassword ? (
-                            <Eye size={18} />
-                        ) : (
-                            <EyeOff size={18} />
-                        )}
+                        <span className="cursor-pointer">
+                            {showPassword ? (
+                                <Eye size={18} />
+                            ) : (
+                                <EyeOff size={18} />
+                            )}
+                        </span>
                     </button>
                 </div>
 
@@ -137,11 +139,13 @@ const Register = () => {
                         className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-600"
                         tabIndex={-1}
                     >
-                        {showConfirmPassword ? (
-                            <Eye size={18} />
-                        ) : (
-                            <EyeOff size={18} />
-                        )}
+                        <span className="cursor-pointer">
+                            {showConfirmPassword ? (
+                                <Eye size={18} />
+                            ) : (
+                                <EyeOff size={18} />
+                            )}
+                        </span>
                     </button>
                 </div>
 

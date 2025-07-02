@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
-
+import { Loader2 } from "lucide-react";
 import api from "./utils/axiosConfig"; // axiosConfig sets base url and adds an interceptor to add the JWT token to every request
 
 // Bootstrap for styling
@@ -19,9 +19,7 @@ import { CartProvider } from "./contexts/CartContext";
 
 // Components
 import Navbar from "./components/Navbar/Navbar";
-import RequireAdmin from "./components/RequireAdmin/RequireAdmin";
-import RestrictAdmin from "./components/RestrictAdmin/RestrictAdmin";
-import RequireUser from "./components/RequireUser/RequireUser";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 // Pages
 import Login from "./pages/Auth/Login/Login";
@@ -65,6 +63,7 @@ function App() {
             setUserLoading(false); // No token? Not loading user
         }
     }, []);
+
     return (
         <Router>
             <UserContext.Provider value={{ user, setUser, userLoading }}>
@@ -88,79 +87,75 @@ function App() {
                         <Route
                             path="/change-password"
                             element={
-                                !user ? (
-                                    <Navigate to="/login" />
-                                ) : (
+                                <ProtectedRoute>
                                     <ChangePasswordPage />
-                                )
+                                </ProtectedRoute>
                             }
                         />
                         <Route
                             path="/profile"
                             element={
-                                !user ? (
-                                    <Navigate to="/login" />
-                                ) : (
+                                <ProtectedRoute>
                                     <ProfilePage />
-                                )
+                                </ProtectedRoute>
                             }
                         />
                         <Route path="/menu" element={<MenuPage />} />
                         <Route
                             path="/cart"
                             element={
-                                <RestrictAdmin>
+                                <ProtectedRoute forbidRole="admin">
                                     <CartPage />
-                                </RestrictAdmin>
+                                </ProtectedRoute>
                             }
                         />
                         <Route
                             path="/checkout"
                             element={
-                                <RequireUser>
+                                <ProtectedRoute requiredRole="user">
                                     <CheckoutPage />
-                                </RequireUser>
+                                </ProtectedRoute>
                             }
                         />
                         <Route
                             path="/my-orders"
                             element={
-                                <RequireUser>
+                                <ProtectedRoute requiredRole="user">
                                     <MyOrdersPage />
-                                </RequireUser>
+                                </ProtectedRoute>
                             }
                         />
 
                         <Route
                             path="/orders/:id"
                             element={
-                                <RequireUser>
+                                <ProtectedRoute requiredRole="user">
                                     <OrderConfirmationPage />
-                                </RequireUser>
+                                </ProtectedRoute>
                             }
                         />
                         <Route
                             path="/admin/menu-management"
                             element={
-                                <RequireAdmin>
+                                <ProtectedRoute requiredRole="admin">
                                     <AdminMenuManagerPage />
-                                </RequireAdmin>
+                                </ProtectedRoute>
                             }
                         />
                         <Route
                             path="/admin/order-management"
                             element={
-                                <RequireAdmin>
+                                <ProtectedRoute requiredRole="admin">
                                     <AdminOrderManagerPage />
-                                </RequireAdmin>
+                                </ProtectedRoute>
                             }
                         />
                         <Route
                             path="/admin"
                             element={
-                                <RequireAdmin>
+                                <ProtectedRoute requiredRole="admin">
                                     <AdminDashboard />
-                                </RequireAdmin>
+                                </ProtectedRoute>
                             }
                         />
                         <Route
