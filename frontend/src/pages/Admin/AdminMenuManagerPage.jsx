@@ -20,7 +20,7 @@ import AddCategoryModal from "../../components/Admin/AddCategoryModal";
 import EditCategoryModal from "../../components/Admin/EditCategoryModal";
 import AddEditMenuItemModal from "../../components/Admin/Menu/AddEditMenuItemModal";
 import MenuItemCard from "../../components/Admin/Menu/MenuItemCard";
-import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
+import ConfirmationModal from "../../components/Common/ConfirmationModal";
 
 const AdminMenuManagerPage = () => {
     const [loading, setLoading] = useState(true);

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { useCart } from "../../../contexts/CartContext";
+import { useCart } from "../../contexts/CartContext";
 import { Minus, Plus } from "lucide-react";
 
 const MenuModal = ({ item, onClose, isAdmin }) => {

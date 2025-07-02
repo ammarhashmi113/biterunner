@@ -1,7 +1,7 @@
 import { useState } from "react";
-import { useCart } from "../../contexts/CartContext";
+import { useCart } from "../contexts/CartContext";
 import { useNavigate } from "react-router-dom";
-import ConfirmationModal from "../../components/ConfirmationModal/ConfirmationModal";
+import ConfirmationModal from "../components/Common/ConfirmationModal";
 
 import {
     ShoppingCart,

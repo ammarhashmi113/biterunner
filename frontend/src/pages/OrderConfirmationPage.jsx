@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import api from "../../utils/axiosConfig";
-import { useCart } from "../../contexts/CartContext";
+import api from "../utils/axiosConfig";
+import { useCart } from "../contexts/CartContext";
 
 import {
     CheckCircle,

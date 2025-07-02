@@ -3,7 +3,7 @@ import api from "../../../utils/axiosConfig";
 import { toast } from "react-hot-toast";
 import { Pencil, Trash2 } from "lucide-react";
 
-import ConfirmationModal from "../../ConfirmationModal/ConfirmationModal";
+import ConfirmationModal from "../../Common/ConfirmationModal";
 
 const MenuItemCard = ({ item, onEdit, onDeleteSuccess }) => {
     const [deleting, setDeleting] = useState(false);

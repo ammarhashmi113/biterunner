@@ -3,7 +3,7 @@ import api from "../../utils/axiosConfig";
 import { toast } from "react-hot-toast";
 import { Tag, ListOrdered, X, PlusCircle, Loader2 } from "lucide-react";
 
-import ImageUploader from "../ImageUploader/ImageUploader";
+import ImageUploader from "../Common/ImageUploader";
 
 const AddCategoryModal = ({ onClose, onCategoryAdded }) => {
     const [formData, setFormData] = useState({

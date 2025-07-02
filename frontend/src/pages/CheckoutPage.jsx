@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import { useCart } from "../../contexts/CartContext";
+import { useCart } from "../contexts/CartContext";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../../contexts/userContext";
-import axios from "../../utils/axiosConfig";
+import { useUser } from "../contexts/userContext";
+import axios from "../utils/axiosConfig";
 import toast from "react-hot-toast";
 
 import {

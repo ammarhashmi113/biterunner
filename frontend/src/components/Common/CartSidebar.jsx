@@ -17,7 +17,7 @@ import {
     ArrowRightCircle,
 } from "lucide-react";
 
-import ConfirmationModal from "../ConfirmationModal/ConfirmationModal";
+import ConfirmationModal from "./ConfirmationModal";
 
 const CartSidebar = ({ isOpen, onClose }) => {
     const navigate = useNavigate();

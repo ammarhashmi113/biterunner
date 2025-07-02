@@ -14,7 +14,7 @@ import {
     XCircle,
 } from "lucide-react";
 
-import ImageUploader from "../../ImageUploader/ImageUploader";
+import ImageUploader from "../../Common/ImageUploader";
 
 const MenuItemForm = ({ initialData = {}, onSubmit, onClose }) => {
     const [formData, setFormData] = useState({

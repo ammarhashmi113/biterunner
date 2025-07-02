@@ -17,8 +17,8 @@ import { UserContext } from "./contexts/userContext";
 import { CartProvider } from "./contexts/CartContext";
 
 // Components
-import Navbar from "./components/Navbar/Navbar";
-import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import Navbar from "./components/Navbar";
+import ProtectedRoute from "./components/Common/ProtectedRoute";
 
 // Pages
 import AuthPage from "./pages/Auth/AuthPage";
@@ -26,12 +26,12 @@ import MenuPage from "./pages/Menu/MenuPage";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminMenuManagerPage from "./pages/Admin/AdminMenuManagerPage";
 import AdminOrderManagerPage from "./pages/Admin/AdminOrderManagerPage";
-import CartPage from "./pages/CartPage/CartPage";
-import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
-import OrderConfirmationPage from "./pages/OrderConfirmationPage/OrderConfirmationPage";
+import CartPage from "./pages/CartPage";
+import CheckoutPage from "./pages/CheckoutPage";
+import OrderConfirmationPage from "./pages/OrderConfirmationPage";
 import MyOrdersPage from "./pages/MyOrdersPage/MyOrdersPage";
-import ProfilePage from "./pages/ProfilePage/ProfilePage";
-import ChangePasswordPage from "./pages/ChangePasswordPage/ChangePasswordPage";
+import ProfilePage from "./pages/ProfilePage";
+import ChangePasswordPage from "./pages/ChangePasswordPage";
 
 function App() {
     const [user, setUser] = useState(null);

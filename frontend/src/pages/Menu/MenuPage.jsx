@@ -3,8 +3,8 @@ import { useEffect, useState, useContext } from "react";
 import api from "../../utils/axiosConfig";
 import { Utensils } from "lucide-react";
 
-import MenuModal from "./MenuModal/MenuModal";
-import SkeletonMenuCard from "./SkeletonMenuCard/SkeletonMenuCard";
+import MenuModal from "./MenuModal";
+import SkeletonMenuCard from "./MenuPageCardSkeleton";
 import MenuCategorySection from "./MenuCategorySection/MenuCategorySection";
 import { UserContext } from "../../contexts/userContext";
 
