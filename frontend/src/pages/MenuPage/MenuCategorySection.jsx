@@ -1,5 +1,5 @@
 // components/MenuPage/MenuCategorySection.jsx
-import MenuCard from "./MenuCard/MenuCard";
+import MenuCard from "./MenuCategorySectionMenuCard";
 
 const MenuCategorySection = ({ title, imageUrl, items, onSelect, isAdmin }) => {
     return (

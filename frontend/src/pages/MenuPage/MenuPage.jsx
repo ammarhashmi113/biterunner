@@ -5,7 +5,7 @@ import { Utensils } from "lucide-react";
 
 import MenuModal from "./MenuModal";
 import SkeletonMenuCard from "./MenuPageCardSkeleton";
-import MenuCategorySection from "./MenuCategorySection/MenuCategorySection";
+import MenuCategorySection from "./MenuCategorySection";
 import { UserContext } from "../../contexts/userContext";
 
 const MenuPage = () => {

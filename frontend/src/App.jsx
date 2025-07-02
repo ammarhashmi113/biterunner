@@ -22,7 +22,7 @@ import ProtectedRoute from "./components/Common/ProtectedRoute";
 
 // Pages
 import AuthPage from "./pages/Auth/AuthPage";
-import MenuPage from "./pages/Menu/MenuPage";
+import MenuPage from "./pages/MenuPage/MenuPage";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminMenuManagerPage from "./pages/Admin/AdminMenuManagerPage";
 import AdminOrderManagerPage from "./pages/Admin/AdminOrderManagerPage";
