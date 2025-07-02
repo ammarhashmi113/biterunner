@@ -6,7 +6,6 @@ import {
 } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
-import { Loader2 } from "lucide-react";
 import api from "./utils/axiosConfig"; // axiosConfig sets base url and adds an interceptor to add the JWT token to every request
 
 // Bootstrap for styling
@@ -22,8 +21,7 @@ import Navbar from "./components/Navbar/Navbar";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 
 // Pages
-import Login from "./pages/Auth/Login/Login";
-import Register from "./pages/Auth/Register/Register";
+import AuthPage from "./pages/Auth/AuthPage";
 import MenuPage from "./pages/Menu/MenuPage";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminMenuManagerPage from "./pages/Admin/AdminMenuManagerPage";
@@ -76,12 +74,22 @@ function App() {
                         <Route path="/" element={<Navigate to="/menu" />} />
                         <Route
                             path="/login"
-                            element={user ? <Navigate to="/menu" /> : <Login />}
+                            element={
+                                user ? (
+                                    <Navigate to="/menu" />
+                                ) : (
+                                    <AuthPage modeType="login" />
+                                )
+                            }
                         />
                         <Route
                             path="/register"
                             element={
-                                user ? <Navigate to="/menu" /> : <Register />
+                                user ? (
+                                    <Navigate to="/menu" />
+                                ) : (
+                                    <AuthPage modeType="register" />
+                                )
                             }
                         />
                         <Route
