@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
-import { useCart } from "../contexts/CartContext";
 import { useNavigate } from "react-router-dom";
-import { useUser } from "../contexts/userContext";
-import axios from "../utils/axiosConfig";
 import toast from "react-hot-toast";
-
 import {
     CreditCard,
     ReceiptText,
@@ -15,7 +11,14 @@ import {
     CheckCircle,
 } from "lucide-react";
 
+import { useUser } from "../contexts/userContext";
+import { useCart } from "../contexts/CartContext";
+import api from "../utils/axiosConfig";
+import { usePageTitle } from "../utils/usePageTitle";
+
 const CheckoutPage = () => {
+    usePageTitle("Checkout");
+
     const { cartItems, clearCart } = useCart();
     const { user } = useUser();
     const navigate = useNavigate();
@@ -45,10 +48,12 @@ const CheckoutPage = () => {
 
         try {
             setIsPlacingOrder(true);
-            const res = await axios.post("/orders", payload);
+            const res = await api.post("/orders", payload);
             toast.success("Order placed successfully!");
             clearCart();
-            navigate(`/orders/${res.data._id}`);
+            navigate(`/orders/${res.data._id}`, {
+                state: { fromCheckout: true },
+            });
         } catch (err) {
             console.error(err);
             toast.error("Failed to place order. Please try again.");

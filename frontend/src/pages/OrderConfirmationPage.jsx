@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate, useLocation, Link } from "react-router-dom";
 import toast from "react-hot-toast";
-import api from "../utils/axiosConfig";
-import { useCart } from "../contexts/CartContext";
-
 import {
     CheckCircle,
     ReceiptText,
@@ -14,12 +11,24 @@ import {
     Loader2,
 } from "lucide-react";
 
+import { useCart } from "../contexts/CartContext";
+import api from "../utils/axiosConfig";
+import { usePageTitle } from "../utils/usePageTitle";
+
 const OrderConfirmationPage = () => {
     const { id } = useParams();
     const { addMultipleToCart } = useCart();
     const [order, setOrder] = useState(null);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
+
+    // For checking if being redirected from checkout page
+    const location = useLocation();
+    const fromCheckout = location.state?.fromCheckout;
+
+    // Dynamic page title
+    const pageTitle = fromCheckout ? "Thank You For Ordering" : `Your Order`;
+    usePageTitle(pageTitle);
 
     useEffect(() => {
         const fetchOrder = async () => {

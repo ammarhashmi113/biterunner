@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
-import api from "../../utils/axiosConfig";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
-
 import {
     ClipboardList,
     Hash,
@@ -11,6 +9,9 @@ import {
     Wallet,
     Clock,
 } from "lucide-react";
+
+import api from "../../utils/axiosConfig";
+import { usePageTitle } from "../../utils/usePageTitle";
 
 import MyOrdersCardSkeleton from "./MyOrdersCardSkeleton";
 
@@ -33,6 +34,8 @@ const statusColors = {
 };
 
 const MyOrdersPage = () => {
+    usePageTitle("Your Orders");
+
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
 

@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Collapse } from "react-collapse";
 import { toast } from "react-hot-toast";
-import api from "../../utils/axiosConfig";
-
 import {
     LayoutGrid,
     PlusCircle,
@@ -16,6 +14,9 @@ import {
     Loader2,
 } from "lucide-react";
 
+import api from "../../utils/axiosConfig";
+import { usePageTitle } from "../../utils/usePageTitle";
+
 import AddCategoryModal from "../../components/Admin/AddCategoryModal";
 import EditCategoryModal from "../../components/Admin/EditCategoryModal";
 import AddEditMenuItemModal from "../../components/Admin/Menu/AddEditMenuItemModal";
@@ -23,6 +24,8 @@ import MenuItemCard from "../../components/Admin/Menu/MenuItemCard";
 import ConfirmationModal from "../../components/Common/ConfirmationModal";
 
 const AdminMenuManagerPage = () => {
+    usePageTitle("Menu Management");
+
     const [loading, setLoading] = useState(true);
     const [categories, setCategories] = useState([]);
     const [menuItems, setMenuItems] = useState([]);

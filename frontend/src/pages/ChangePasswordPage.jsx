@@ -1,11 +1,14 @@
 import { useState } from "react";
-import api from "../utils/axiosConfig";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-
+import toast from "react-hot-toast";
 import { ShieldCheck, Lock, KeyRound, Repeat, Save } from "lucide-react";
 
+import api from "../utils/axiosConfig";
+import { usePageTitle } from "../utils/usePageTitle";
+
 const ChangePasswordPage = () => {
+    usePageTitle("Change Password");
+
     const [formData, setFormData] = useState({
         oldPassword: "",
         newPassword: "",

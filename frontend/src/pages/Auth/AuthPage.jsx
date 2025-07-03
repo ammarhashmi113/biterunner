@@ -4,9 +4,13 @@ import { toast } from "react-hot-toast";
 
 import api from "../../utils/axiosConfig";
 import { useUser } from "../../contexts/userContext";
+import { usePageTitle } from "../../utils/usePageTitle";
+
 import AuthForm from "./AuthForm";
 
 const AuthPage = ({ modeType }) => {
+    usePageTitle(modeType === "login" ? "Login" : "Register");
+
     const navigate = useNavigate();
     const { setUser } = useUser();
 

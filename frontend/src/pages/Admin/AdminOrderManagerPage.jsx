@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import axios from "../../utils/axiosConfig";
 import { Collapse } from "react-collapse";
-
 import {
     Loader2,
     Truck,
@@ -14,6 +12,9 @@ import {
     Wallet,
     UtensilsCrossed,
 } from "lucide-react";
+
+import axios from "../../utils/axiosConfig";
+import { usePageTitle } from "../../utils/usePageTitle";
 
 const statusOptions = [
     "pending",
@@ -43,6 +44,8 @@ const statusColors = {
 };
 
 const AdminOrderManagerPage = () => {
+    usePageTitle("Order Management");
+
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
     const [openGroups, setOpenGroups] = useState({});

@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../utils/axiosConfig";
 import toast from "react-hot-toast";
-
 import {
     UserCircle,
     BadgeCheck,
@@ -15,7 +13,12 @@ import {
     Loader2,
 } from "lucide-react";
 
+import api from "../utils/axiosConfig";
+import { usePageTitle } from "../utils/usePageTitle";
+
 const ProfilePage = () => {
+    usePageTitle("Your Profile");
+
     const [user, setUser] = useState(null);
     const [formData, setFormData] = useState({ username: "", phoneNumber: "" });
     const [loading, setLoading] = useState(true);

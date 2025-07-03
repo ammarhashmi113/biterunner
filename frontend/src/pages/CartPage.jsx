@@ -1,8 +1,5 @@
 import { useState } from "react";
-import { useCart } from "../contexts/CartContext";
 import { useNavigate } from "react-router-dom";
-import ConfirmationModal from "../components/Common/ConfirmationModal";
-
 import {
     ShoppingCart,
     Plus,
@@ -15,7 +12,14 @@ import {
     BrushCleaning,
 } from "lucide-react";
 
+import { useCart } from "../contexts/CartContext";
+import { usePageTitle } from "../utils/usePageTitle";
+
+import ConfirmationModal from "../components/Common/ConfirmationModal";
+
 const CartPage = () => {
+    usePageTitle("Cart");
+
     const { cartItems, updateQuantity, removeFromCart, clearCart } = useCart();
     const navigate = useNavigate();
 

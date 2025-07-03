@@ -1,14 +1,18 @@
 // // components/MenuPage.jsx
 import { useEffect, useState, useContext } from "react";
-import api from "../../utils/axiosConfig";
 import { Utensils } from "lucide-react";
+
+import api from "../../utils/axiosConfig";
+import { UserContext } from "../../contexts/userContext";
+import { usePageTitle } from "../../utils/usePageTitle";
 
 import MenuModal from "./MenuModal";
 import SkeletonMenuCard from "./MenuPageCardSkeleton";
 import MenuCategorySection from "./MenuCategorySection";
-import { UserContext } from "../../contexts/userContext";
 
 const MenuPage = () => {
+    usePageTitle("Menu");
+
     const { user } = useContext(UserContext);
     const [menuItems, setMenuItems] = useState([]);
     const [categories, setCategories] = useState([]);
