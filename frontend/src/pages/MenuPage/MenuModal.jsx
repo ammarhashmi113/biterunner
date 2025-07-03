@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useCart } from "../../contexts/CartContext";
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus, X } from "lucide-react";
 
 const MenuModal = ({ item, onClose, isAdmin }) => {
     const [quantity, setQuantity] = useState(1);
@@ -29,13 +29,13 @@ const MenuModal = ({ item, onClose, isAdmin }) => {
         <div className="fixed inset-0 z-50 bg-black/60 flex items-center justify-center px-4">
             <div
                 ref={modalRef}
-                className="rounded-xl shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto relative bg-white"
+                className="rounded-xl shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto relative"
             >
                 <button
                     onClick={onClose}
-                    className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-3xl font-bold"
+                    className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-3xl font-bold cursor-pointer"
                 >
-                    ×
+                    <X />
                 </button>
 
                 <img
@@ -43,7 +43,7 @@ const MenuModal = ({ item, onClose, isAdmin }) => {
                     alt={item.name}
                     className="w-full h-56 object-cover rounded-t-xl"
                 />
-                <div className="p-5">
+                <div className="p-5 bg-white">
                     <h2 className="text-2xl font-semibold mb-2">{item.name}</h2>
                     <p className="text-gray-600 mb-4">{item.description}</p>
 

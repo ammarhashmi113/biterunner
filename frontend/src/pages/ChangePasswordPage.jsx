@@ -1,7 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { ShieldCheck, Lock, KeyRound, Repeat, Save } from "lucide-react";
+import {
+    ShieldCheck,
+    Lock,
+    KeyRound,
+    Repeat,
+    Save,
+    Loader2,
+} from "lucide-react";
 
 import api from "../utils/axiosConfig";
 import { usePageTitle } from "../utils/usePageTitle";
@@ -114,9 +121,13 @@ const ChangePasswordPage = () => {
                 <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-2 flex justify-center items-center gap-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                    className="w-full py-2 flex justify-center items-center gap-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                    <Save size={16} />
+                    {loading ? (
+                        <Loader2 size={16} className="animate-spin" />
+                    ) : (
+                        <Save size={16} />
+                    )}
                     {loading ? "Updating..." : "Change Password"}
                 </button>
             </form>

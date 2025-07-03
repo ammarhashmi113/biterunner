@@ -154,23 +154,23 @@ const AdminMenuManagerPage = () => {
 
                 <Link
                     onClick={() => setShowAddCategoryModal(true)}
-                    className="flex items-center gap-2 px-4 py-2 text-green-700 hover:text-white border border-green-700 hover:bg-green-700 rounded-4xl transition"
+                    className="flex items-center gap-2 px-2 py-1 text-green-700 hover:text-white border border-green-700 hover:bg-green-700 rounded-4xl transition"
                 >
                     <PlusCircle size={18} />
-                    Add Category
+                    New Category
                 </Link>
             </div>
 
             {groupedData.map((cat) => (
                 <div
                     key={cat._id}
-                    className="mb-6 border border-gray-200 rounded-xl shadow-md bg-white transition-shadow hover:shadow-lg overflow-hidden cursor-pointer"
+                    className="mb-6 border border-gray-200 rounded-xl shadow-md bg-white transition-shadow hover:shadow-lg overflow-hidden"
                 >
                     {/* Toggle Header */}
                     <div onClick={() => toggleCategory(cat._id)}>
                         {/* Image */}
                         {cat.imageUrl ? (
-                            <div className="relative w-full h-50 rounded-t-xl overflow-hidden shadow">
+                            <div className="relative w-full h-50 rounded-t-xl overflow-hidden shadow cursor-pointer">
                                 <img
                                     src={cat.imageUrl}
                                     alt={cat.name}
@@ -209,21 +209,21 @@ const AdminMenuManagerPage = () => {
                     <Collapse isOpened={openCategoryId === cat._id}>
                         <div className="p-4 space-y-4">
                             {/* Action Links */}
-                            <div className="flex justify-between sm:justify-between items-center">
+                            <div className="flex justify-between flex-col items-center sm:flex-row sm: gap-5">
                                 <div className="flex gap-3">
                                     <Link
                                         onClick={() => setEditingCategory(cat)}
-                                        className="flex items-center gap-1 px-3 py-1 text-sm text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-700 rounded-4xl transition"
+                                        className="flex items-center gap-1 px-2 py-1 text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-700 rounded-4xl transition"
                                     >
                                         <Pencil size={14} />
-                                        Edit
+                                        Edit Category
                                     </Link>
 
                                     <Link
                                         onClick={() =>
                                             handleCategoryDelete(cat)
                                         }
-                                        className="flex items-center gap-1 px-3 py-1 text-sm text-red-700 hover:text-white border border-red-700 hover:bg-red-700 rounded-4xl transition"
+                                        className="flex items-center gap-1 px-2 py-1 text-red-700 hover:text-white border border-red-700 hover:bg-red-700 rounded-4xl transition"
                                     >
                                         <Trash2 size={14} />
                                         Delete
@@ -232,7 +232,7 @@ const AdminMenuManagerPage = () => {
 
                                 <Link
                                     onClick={() => handleItemAdd(cat)}
-                                    className="flex items-center gap-1 px-3 py-1 text-sm text-green-700 hover:text-white border border-green-700 hover:bg-green-700 rounded-4xl transition"
+                                    className="flex items-center gap-1 px-3 py-1 text-md text-white bg-green-600 hover:bg-green-700 rounded-xl transition cursor-pointer"
                                 >
                                     <PlusSquare size={14} />
                                     New Item

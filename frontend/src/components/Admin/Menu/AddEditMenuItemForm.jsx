@@ -205,7 +205,7 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose }) => {
                 <button
                     type="button"
                     onClick={onClose}
-                    className="flex items-center gap-1 bg-gray-200 text-gray-700 px-4 py-2 rounded-4xl hover:bg-gray-300 cursor-pointer"
+                    className="flex items-center gap-1 bg-gray-200 text-gray-700 px-4 py-2 rounded-xl hover:bg-gray-300 cursor-pointer"
                 >
                     <XCircle size={18} />
                     Cancel
@@ -213,7 +213,7 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose }) => {
                 <button
                     type="submit"
                     disabled={loading || (!formData.imageUrl && !selectedFile)}
-                    className={`flex items-center gap-1 px-4 py-2 text-white rounded-4xl cursor-pointer ${
+                    className={`flex items-center gap-1 px-4 py-2 text-white rounded-xl cursor-pointer ${
                         loading
                             ? "bg-green-400 cursor-not-allowed"
                             : "bg-green-600 hover:bg-green-700"
@@ -222,7 +222,7 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose }) => {
                     {loading ? (
                         <>
                             <Loader2 size={18} className="animate-spin" />
-                            Saving
+                            Saving...
                         </>
                     ) : initialData?._id ? (
                         <>

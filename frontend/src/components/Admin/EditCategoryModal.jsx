@@ -143,7 +143,7 @@ const EditCategoryModal = ({ category, onClose, onCategoryUpdated }) => {
                                         size={18}
                                         className="animate-spin"
                                     />
-                                    Saving
+                                    Saving...
                                 </>
                             ) : (
                                 <>

@@ -226,10 +226,10 @@ const CartSidebar = ({ isOpen, onClose }) => {
                     {/* Checkout */}
                     <button
                         disabled={cartItems.length === 0}
-                        className={`w-full py-2 rounded-4xl text-white font-semibold transition flex items-center justify-center gap-2 cursor-pointer ${
+                        className={`w-full py-2 rounded-4xl text-white font-semibold transition flex items-center justify-center gap-2 ${
                             cartItems.length === 0
                                 ? "bg-gray-400 cursor-not-allowed"
-                                : "bg-red-500 hover:bg-orange-700"
+                                : "bg-red-500 hover:bg-orange-700 cursor-pointer"
                         }`}
                         onClick={() => {
                             onClose();

@@ -139,7 +139,7 @@ const AddCategoryModal = ({ onClose, onCategoryAdded }) => {
                                         size={18}
                                         className="animate-spin"
                                     />
-                                    Saving
+                                    Saving...
                                 </>
                             ) : (
                                 <>
