@@ -6,7 +6,7 @@ const MenuCategorySectionMenuCard = ({ item, onClick, isAdmin }) => {
     return (
         <div
             onClick={onClick}
-            className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer overflow-hidden flex flex-col h-full"
+            className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer overflow-hidden flex flex-col transition-opacity duration-500 opacity-0 animate-fadeIn h-[258px] sm:h-[374px] md:h-[390px]"
         >
             <div className="aspect-[4/3] w-full overflow-hidden">
                 <img
@@ -18,7 +18,7 @@ const MenuCategorySectionMenuCard = ({ item, onClick, isAdmin }) => {
 
             <div className="flex-1 p-4 flex flex-col justify-between">
                 <div>
-                    <h3 className="text-base sm:text-lg font-semibold mb-1 line-clamp-1">
+                    <h3 className="text-sm sm:text-base md:text-lg font-semibold mb-1 line-clamp-2 sm:line-clamp-1">
                         {item.name}
                     </h3>
                     <p className="text-sm text-gray-600 line-clamp-2">

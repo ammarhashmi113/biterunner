@@ -1,8 +1,8 @@
-// components/MenuPage/SkeletonCategoryBanner.jsx
+// components/MenuPage/MenuCategoryBannerSkeleton.jsx
 
-const SkeletonCategoryBanner = () => {
+const MenuCategoryBannerSkeleton = () => {
     return (
-        <div className="relative w-full aspect-[16/5] sm:h-64 mb-6 rounded-sm overflow-hidden shadow bg-gray-300">
+        <div className="relative w-full aspect-[16/5] sm:h-64 mb-6 rounded-sm overflow-hidden shadow bg-gray-300 transition-opacity duration-500 opacity-0 animate-fadeIn">
             {/* Shimmer layer */}
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer z-10" />
 
@@ -14,4 +14,4 @@ const SkeletonCategoryBanner = () => {
     );
 };
 
-export default SkeletonCategoryBanner;
+export default MenuCategoryBannerSkeleton;
