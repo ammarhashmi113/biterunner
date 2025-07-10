@@ -20,7 +20,7 @@ import {
 } from "lucide-react";
 
 const Navbar = () => {
-    const { user, setUser } = useUser();
+    const { user, setUser, userLoading } = useUser();
     const { cartItems } = useCart();
     const navigate = useNavigate();
 
@@ -90,7 +90,7 @@ const Navbar = () => {
                     {/* Right: Account + Cart */}
                     <div className="hidden md:flex items-center space-x-6 mt-2">
                         {/* Cart (visible if not admin) */}
-                        {user?.role !== "admin" && (
+                        {!userLoading && user?.role !== "admin" && (
                             <Link
                                 onClick={() => setCartOpen(true)}
                                 className="relative text-gray-700 hover:text-green-600"
@@ -254,7 +254,7 @@ const Navbar = () => {
                             </>
                         )}
 
-                        {user?.role !== "admin" && (
+                        {user && user?.role !== "admin" && (
                             <Link
                                 onClick={() => {
                                     setCartOpen(true);
