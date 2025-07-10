@@ -6,8 +6,9 @@ import api from "../../utils/axiosConfig";
 import { UserContext } from "../../contexts/userContext";
 import { usePageTitle } from "../../utils/usePageTitle";
 
-import MenuModal from "./MenuModal";
+import SkeletonCategoryBanner from "./MenuCategoryBannerSkeleton";
 import SkeletonMenuCard from "./MenuPageCardSkeleton";
+import MenuModal from "./MenuModal";
 import MenuCategorySection from "./MenuCategorySection";
 
 const MenuPage = () => {
@@ -57,21 +58,24 @@ const MenuPage = () => {
             <div className="flex flex-col items-center mb-8">
                 <Utensils className="w-10 h-10 text-orange-500 mb-2" />
                 <h1 className="text-5xl text-red-500 font-serif font-bold tracking-tight text-center">
-                    Bite Into Flavor
+                    Bite Into <br className="sm:hidden" /> Flavor
                 </h1>
                 <p className="text-center text-gray-500 text-lg mt-1 font-serif">
                     Explore our chef-crafted dishes
                 </p>
             </div>
 
-            {loading ? (
-                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-                    {Array(8)
-                        .fill(0)
-                        .map((_, idx) => (
-                            <SkeletonMenuCard key={idx} />
-                        ))}
-                </div>
+            {!loading ? (
+                <>
+                    <SkeletonCategoryBanner />
+                    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+                        {Array(8)
+                            .fill(0)
+                            .map((_, idx) => (
+                                <SkeletonMenuCard key={idx} />
+                            ))}
+                    </div>
+                </>
             ) : (
                 Object.entries(groupedItems).map(([categoryId, group]) => {
                     if (group.items.length === 0) return null;

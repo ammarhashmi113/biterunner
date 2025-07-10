@@ -1,34 +1,47 @@
 // components/MenuCard.jsx
 
-const MenuCard = ({ item, onClick, isAdmin }) => {
+import { Plus } from "lucide-react";
+
+const MenuCategorySectionMenuCard = ({ item, onClick, isAdmin }) => {
     return (
         <div
             onClick={onClick}
-            className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-200 cursor-pointer overflow-hidden"
+            className="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer overflow-hidden flex flex-col h-full"
         >
-            <img
-                src={item.imageUrl}
-                alt={item.name}
-                className="h-36 sm:h-40 md:h-44 w-full object-cover"
-            />
-            <div className="p-3 sm:p-4">
-                <h3 className="text-base sm:text-lg font-semibold line-clamp-1">
-                    {item.name}
-                </h3>
-                <p className="text-xs sm:text-sm text-gray-600 line-clamp-2">
-                    {item.description}
-                </p>
-                <div className="mt-4 flex justify-between items-center text-xs sm:text-sm">
-                    <span className="font-bold text-white bg-green-800 rounded px-1.5 py-0.5 text-xs sm:text-sm">
+            <div className="aspect-[4/3] w-full overflow-hidden">
+                <img
+                    src={item.imageUrl}
+                    alt={item.name}
+                    className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+                />
+            </div>
+
+            <div className="flex-1 p-4 flex flex-col justify-between">
+                <div>
+                    <h3 className="text-base sm:text-lg font-semibold mb-1 line-clamp-1">
+                        {item.name}
+                    </h3>
+                    <p className="text-sm text-gray-600 line-clamp-2">
+                        {item.description}
+                    </p>
+                </div>
+
+                <div className="mt-4 flex justify-between items-center text-sm min-w-0">
+                    <span className="font-bold text-white bg-green-700 rounded-full px-2 py-1 whitespace-nowrap text-xs sm:text-sm">
                         Rs. {item.price}
                     </span>
+
                     {isAdmin ? (
-                        <span className="text-white bg-red-500 rounded px-1.5 py-0.5 text-xs sm:text-sm">
+                        <span className="text-white bg-red-500 rounded-full px-2 py-1 text-xs sm:text-sm whitespace-nowrap">
                             Admin
                         </span>
                     ) : (
-                        <span className="text-white bg-red-600 rounded px-1.5 py-0.5 text-xs sm:text-sm">
-                            Add to cart
+                        <span
+                            title="View details"
+                            className="text-white bg-red-600 rounded-full p-1 sm:px-2 sm:py-1 flex items-center gap-1 text-sm"
+                        >
+                            <Plus className="w-4 h-4" />
+                            <span className="hidden sm:inline">Details</span>
                         </span>
                     )}
                 </div>
@@ -37,4 +50,4 @@ const MenuCard = ({ item, onClick, isAdmin }) => {
     );
 };
 
-export default MenuCard;
+export default MenuCategorySectionMenuCard;
