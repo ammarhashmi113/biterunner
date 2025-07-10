@@ -98,7 +98,7 @@ const Navbar = () => {
                             >
                                 <ShoppingCart size={20} />
                                 {cartCount > 0 && (
-                                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-4 h-4 flex items-center justify-center rounded-full">
+                                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-3/4 h-3/4 flex items-center justify-center rounded-full">
                                         {cartCount}
                                     </span>
                                 )}
@@ -197,11 +197,29 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    {/* Mobile Hamburger */}
-                    <div className="md:hidden mt-3">
+                    {/* Mobile Controls (Hamburger + Cart) */}
+                    <div className="md:hidden mt-3 flex items-center gap-4">
+                        {/* Cart Icon */}
+                        {!userLoading && user?.role !== "admin" && (
+                            <button
+                                onClick={() => setCartOpen(true)}
+                                className="text-gray-700 hover:text-green-600 cursor-pointer relative"
+                                aria-label="Cart"
+                            >
+                                <ShoppingCart size={18} />
+                                {cartCount > 0 && (
+                                    <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-3/4 h-3/4 flex items-center justify-center rounded-full">
+                                        {cartCount}
+                                    </span>
+                                )}
+                            </button>
+                        )}
+
+                        {/* Hamburger Menu */}
                         <button
                             onClick={() => setMenuOpen((prev) => !prev)}
-                            className="text-gray-700 hover:text-green-600 cursor-pointer"
+                            className="text-gray-700 hover:text-green-600 cursor-pointer relative"
+                            aria-label="Menu"
                         >
                             <MenuIcon size={24} />
                         </button>
