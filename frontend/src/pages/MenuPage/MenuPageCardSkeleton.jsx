@@ -5,7 +5,7 @@ const MenuPageCardSkeleton = () => {
             <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/40 to-transparent animate-shimmer z-10" />
 
             {/* Simulated Image (matches aspect-[4/3]) */}
-            <div className="aspect-[4/3] w-full bg-gray-300" />
+            <div className="w-full h-32 sm:h-48 md:h-52 bg-gray-300 shrink-0" />
 
             {/* Simulated Content */}
             <div className="flex-1 p-4 flex flex-col justify-between space-y-3 relative z-0">
