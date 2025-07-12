@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 
@@ -83,6 +83,11 @@ const AuthPage = ({ modeType }) => {
             setLoading(false);
         }
     };
+
+    // Update form mode when the route changes between /login and /register
+    useEffect(() => {
+        setFormMode(modeType);
+    }, [modeType]);
 
     return (
         <AuthForm
