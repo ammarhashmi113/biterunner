@@ -143,6 +143,7 @@ const MenuItemForm = ({ initialData = {}, onSubmit, onClose }) => {
                     placeholder="Description"
                     className="w-full bg-gray-100 rounded-xl px-10 py-2 focus:outline-none focus:ring-1 focus:ring-green-500"
                     rows={3}
+                    data-gramm="false"
                     required
                 />
             </div>
