@@ -1,7 +1,7 @@
 import { useState } from "react";
 import api from "../../../utils/axiosConfig";
 import { toast } from "react-hot-toast";
-import { Pencil, Trash2 } from "lucide-react";
+import { Pencil, Trash2, Loader2 } from "lucide-react";
 
 import ConfirmationModal from "../../Common/ConfirmationModal";
 
@@ -13,6 +13,7 @@ const MenuItemCard = ({ item, onEdit, onDeleteSuccess }) => {
     const handleDelete = async () => {
         setDeleting(true);
         try {
+            setShowDeleteModal(false);
             await api.delete(`/menu/${item._id}`);
             onDeleteSuccess(); // Re-fetch items from parent
             toast.success("Menu item deleted successfully");
@@ -59,7 +60,14 @@ const MenuItemCard = ({ item, onEdit, onDeleteSuccess }) => {
                         className="flex-1 flex items-center justify-center gap-1 bg-red-600 text-white py-1 px-1 rounded-xl hover:bg-red-700 disabled:opacity-50 cursor-pointer"
                     >
                         <Trash2 size={16} />
-                        {deleting ? "Deleting..." : "Delete"}
+                        {deleting ? (
+                            <>
+                                <Loader2 size={18} className="animate-spin" />
+                                Deleting...
+                            </>
+                        ) : (
+                            "Delete"
+                        )}
                     </button>
                 </div>
             </div>
