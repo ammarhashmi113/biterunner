@@ -64,7 +64,7 @@ const MyOrdersPage = () => {
                     My Orders
                 </h1>
                 <div className="space-y-6">
-                    {[...Array(3)].map((_, i) => (
+                    {[...Array(1)].map((_, i) => (
                         <MyOrdersCardSkeleton key={i} />
                     ))}
                 </div>

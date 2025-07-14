@@ -18,11 +18,14 @@ import { CartProvider } from "./contexts/CartContext";
 
 // Components
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import ProtectedRoute from "./components/Common/ProtectedRoute";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Pages
-import AuthPage from "./pages/Auth/AuthPage";
+import LandingPage from "./pages/LandingPage/LandingPage";
 import MenuPage from "./pages/MenuPage/MenuPage";
+import AuthPage from "./pages/Auth/AuthPage";
 import AdminDashboard from "./pages/Admin/AdminDashboard";
 import AdminMenuManagerPage from "./pages/Admin/AdminMenuManagerPage";
 import AdminOrderManagerPage from "./pages/Admin/AdminOrderManagerPage";
@@ -67,114 +70,119 @@ function App() {
             <UserContext.Provider value={{ user, setUser, userLoading }}>
                 <CartProvider>
                     <Toaster position="top-center" reverseOrder={false} />
+                    <ScrollToTop />
+                    {/* Layout wrapper for sticky footer */}
+                    <div className="flex flex-col min-h-screen">
+                        <Navbar />
+                        <main className="flex-1">
+                            <Routes>
+                                <Route path="/" element={<LandingPage />} />
+                                <Route
+                                    path="/login"
+                                    element={
+                                        user ? (
+                                            <Navigate to="/menu" />
+                                        ) : (
+                                            <AuthPage modeType="login" />
+                                        )
+                                    }
+                                />
+                                <Route
+                                    path="/register"
+                                    element={
+                                        user ? (
+                                            <Navigate to="/menu" />
+                                        ) : (
+                                            <AuthPage modeType="register" />
+                                        )
+                                    }
+                                />
+                                <Route
+                                    path="/change-password"
+                                    element={
+                                        <ProtectedRoute>
+                                            <ChangePasswordPage />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/profile"
+                                    element={
+                                        <ProtectedRoute>
+                                            <ProfilePage />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route path="/menu" element={<MenuPage />} />
+                                <Route
+                                    path="/cart"
+                                    element={
+                                        <ProtectedRoute forbidRole="admin">
+                                            <CartPage />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/checkout"
+                                    element={
+                                        <ProtectedRoute requiredRole="user">
+                                            <CheckoutPage />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/my-orders"
+                                    element={
+                                        <ProtectedRoute requiredRole="user">
+                                            <MyOrdersPage />
+                                        </ProtectedRoute>
+                                    }
+                                />
 
-                    <Navbar />
-
-                    <Routes>
-                        <Route path="/" element={<Navigate to="/menu" />} />
-                        <Route
-                            path="/login"
-                            element={
-                                user ? (
-                                    <Navigate to="/menu" />
-                                ) : (
-                                    <AuthPage modeType="login" />
-                                )
-                            }
-                        />
-                        <Route
-                            path="/register"
-                            element={
-                                user ? (
-                                    <Navigate to="/menu" />
-                                ) : (
-                                    <AuthPage modeType="register" />
-                                )
-                            }
-                        />
-                        <Route
-                            path="/change-password"
-                            element={
-                                <ProtectedRoute>
-                                    <ChangePasswordPage />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="/profile"
-                            element={
-                                <ProtectedRoute>
-                                    <ProfilePage />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route path="/menu" element={<MenuPage />} />
-                        <Route
-                            path="/cart"
-                            element={
-                                <ProtectedRoute forbidRole="admin">
-                                    <CartPage />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="/checkout"
-                            element={
-                                <ProtectedRoute requiredRole="user">
-                                    <CheckoutPage />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="/my-orders"
-                            element={
-                                <ProtectedRoute requiredRole="user">
-                                    <MyOrdersPage />
-                                </ProtectedRoute>
-                            }
-                        />
-
-                        <Route
-                            path="/orders/:id"
-                            element={
-                                <ProtectedRoute requiredRole="user">
-                                    <OrderConfirmationPage />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="/admin/menu-management"
-                            element={
-                                <ProtectedRoute requiredRole="admin">
-                                    <AdminMenuManagerPage />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="/admin/order-management"
-                            element={
-                                <ProtectedRoute requiredRole="admin">
-                                    <AdminOrderManagerPage />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="/admin"
-                            element={
-                                <ProtectedRoute requiredRole="admin">
-                                    <AdminDashboard />
-                                </ProtectedRoute>
-                            }
-                        />
-                        <Route
-                            path="*"
-                            element={
-                                <div className="text-center py-10 text-red-600">
-                                    404 - Page Not Found
-                                </div>
-                            }
-                        />
-                    </Routes>
+                                <Route
+                                    path="/orders/:id"
+                                    element={
+                                        <ProtectedRoute requiredRole="user">
+                                            <OrderConfirmationPage />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/admin/menu-management"
+                                    element={
+                                        <ProtectedRoute requiredRole="admin">
+                                            <AdminMenuManagerPage />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/admin/order-management"
+                                    element={
+                                        <ProtectedRoute requiredRole="admin">
+                                            <AdminOrderManagerPage />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="/admin"
+                                    element={
+                                        <ProtectedRoute requiredRole="admin">
+                                            <AdminDashboard />
+                                        </ProtectedRoute>
+                                    }
+                                />
+                                <Route
+                                    path="*"
+                                    element={
+                                        <div className="text-center py-10 text-red-600">
+                                            404 - Page Not Found
+                                        </div>
+                                    }
+                                />
+                            </Routes>
+                        </main>
+                        <Footer />
+                    </div>
                 </CartProvider>
             </UserContext.Provider>
         </Router>
