@@ -1,4 +1,18 @@
+## ⚠️ Backend Hosting Status
+
+The backend APIs are currently offline due to free-tier limits on Render. You can still:
+
+- Explore the fully functional frontend hosted on Vercel
+- Review all backend logic, routes, and authentication in the `backend/` folder
+- Run the fullstack app locally by following the instructions below
+
+This is a temporary issue and will be resolved once stable hosting is arranged.
+
+---
+
 # 🍔 Biterunner
+
+**Live Frontend Demo:**: [biterunner.vercel.app](https://biterunner.vercel.app/)
 
 **Biterunner** is a full-stack restaurant web app with an online ordering system. It supports both customer and admin roles, with features like browsing menu items, managing orders, handling cart and checkout, and maintaining secure user authentication.
 
@@ -13,8 +27,8 @@
 -   **Image Uploads**: Cloudinary
 -   **UI/UX**: TailwindCSS + React Hot Toast
 -   **Deployment**:
-    -   Frontend: [Vercel](https://vercel.com/)
-    -   Backend: [Render](https://render.com/)
+    -   Frontend: [Vercel](https://biterunner.vercel.app/)
+    -   Backend (Currently offline because of free-tier limits): [Render](https://campverse-booking-app.onrender.com/)
 
 ---
 
