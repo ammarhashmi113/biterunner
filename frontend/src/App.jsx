@@ -21,6 +21,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/Common/ProtectedRoute";
 import ScrollToTop from "./components/ScrollToTop";
+import FirstVisitModal from "./components/FirstVisitModal";
 
 // Pages
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -74,6 +75,10 @@ function App() {
                     {/* Layout wrapper for sticky footer */}
                     <div className="flex flex-col min-h-screen">
                         <Navbar />
+
+                        {/* Showing backend API down notice modal for first-time visitors */}
+                        <FirstVisitModal />
+
                         <main className="flex-1">
                             <Routes>
                                 <Route path="/" element={<LandingPage />} />
