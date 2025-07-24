@@ -16,6 +16,7 @@ const AppError = require("./utils/AppError");
 // Cors Settings
 const allowedOrigins = [
     "http://localhost:5173", // Local frontend URL
+    "http://192.168.100.4:5173", // Loca phone testing
     "https://biterunner.vercel.app", // Deployed frontend
 ];
 app.use(
@@ -33,7 +34,7 @@ mongoose
         console.log("✅ MongoDB connected");
 
         // Start Express server only after DB is connected
-        app.listen(3000, () => {
+        app.listen(3000, "0.0.0.0", () => {
             console.log("🚀 Server listening on Port 3000");
         });
     })

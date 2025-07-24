@@ -1,9 +1,16 @@
 // components/MenuPage/MenuCategorySection.jsx
 import MenuCategorySectionMenuCard from "./MenuCategorySectionMenuCard";
 
-const MenuCategorySection = ({ title, imageUrl, items, onSelect, isAdmin }) => {
+const MenuCategorySection = ({
+    id,
+    title,
+    imageUrl,
+    items,
+    onSelect,
+    isAdmin,
+}) => {
     return (
-        <section className="mb-12">
+        <section id={id} className="mb-12 scroll-mt-28">
             <div className="relative w-full aspect-[16/5] sm:h-64 mb-6 rounded-sm overflow-hidden shadow">
                 <img
                     src={imageUrl}

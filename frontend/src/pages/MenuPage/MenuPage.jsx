@@ -6,6 +6,7 @@ import api from "../../utils/axiosConfig";
 import { UserContext } from "../../contexts/userContext";
 import { usePageTitle } from "../../utils/usePageTitle";
 
+import MenuCategoriesNavbar from "../../components/MenuCategoriesNavbar";
 import SkeletonCategoryBanner from "./MenuCategoryBannerSkeleton";
 import SkeletonMenuCard from "./MenuPageCardSkeleton";
 import MenuModal from "./MenuModal";
@@ -20,6 +21,7 @@ const MenuPage = () => {
     const [loading, setLoading] = useState(true);
     const [selectedItem, setSelectedItem] = useState(null); // <== now store item directly
 
+    // 0. Fetching data when component mounts
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -38,6 +40,7 @@ const MenuPage = () => {
         fetchData();
     }, []);
 
+    // 1. Group categories and prep empty items arrays
     const groupedItems = categories.reduce((acc, category) => {
         acc[category._id] = {
             name: category.name,
@@ -47,11 +50,17 @@ const MenuPage = () => {
         return acc;
     }, {});
 
+    // 2. Populate those groups with actual menu items
     menuItems.forEach((item) => {
         if (groupedItems[item.category]) {
             groupedItems[item.category].items.push(item);
         }
     });
+
+    // 3. Now filter only the categories that have items
+    const visibleCategories = categories.filter(
+        (cat) => groupedItems[cat._id]?.items.length > 0
+    );
 
     return (
         <div className="p-4 max-w-7xl mx-auto">
@@ -64,6 +73,13 @@ const MenuPage = () => {
                     Explore our chef-crafted dishes
                 </p>
             </div>
+
+            {/*bg-white w-full fixed top-0 left-0 z-50*/}
+            {!loading && categories.length > 0 && (
+                <div className="sticky top-16 z-40 bg-white shadow-md w-full">
+                    <MenuCategoriesNavbar categories={visibleCategories} />
+                </div>
+            )}
 
             {loading ? (
                 <>
@@ -83,6 +99,7 @@ const MenuPage = () => {
                     return (
                         <MenuCategorySection
                             key={categoryId}
+                            id={`category-${categoryId}`}
                             title={group.name}
                             imageUrl={group.imageUrl}
                             items={group.items}

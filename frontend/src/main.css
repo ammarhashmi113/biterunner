@@ -10,3 +10,20 @@
 .animate-fadeIn {
     animation: fadeIn 0.5s ease-out forwards;
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+html,
+body,
+#root {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
