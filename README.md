@@ -39,7 +39,7 @@
 
 - **Frontend**: React + Vite + React Router
 - **Backend**: Node.js + Express.js
-- **Database**: MongoDB (local for dev, Atlas planned for prod)
+- **Database**: MongoDB Atlas
 - **Auth**: JWT with role-based access
 - **State Management**: React Context + localStorage
 - **Image Uploads**: Cloudinary
