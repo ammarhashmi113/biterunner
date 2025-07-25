@@ -1,169 +1,179 @@
-## ⚠️ Backend Hosting Status
-
-The backend APIs are currently offline due to free-tier limits on Render. You can still:
-
-- Explore the fully functional frontend hosted on Vercel
-- Review all backend logic, routes, and authentication in the `backend/` folder
-- Run the fullstack app locally by following the instructions below
-
-This is a temporary issue and will be resolved once stable hosting is arranged.
-
----
 
 # 🍔 Biterunner
 
-**Live Frontend Demo:**: [biterunner.vercel.app](https://biterunner.vercel.app/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen?logo=vercel)](https://biterunner.vercel.app)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Tech Stack](https://img.shields.io/badge/stack-MERN-blue)](#-tech-stack)
 
-**Biterunner** is a full-stack restaurant web app with an online ordering system. It supports both customer and admin roles, with features like browsing menu items, managing orders, handling cart and checkout, and maintaining secure user authentication.
+![Biterunner Screenshot](https://raw.githubusercontent.com/ammarhashmi113/biterunner/refs/heads/main/frontend/public/og-image.png)
+
+> **Note**: Backend APIs are currently offline due to Render's free-tier limits. You can still explore the frontend and run the full-stack app locally.
+
+---
+
+## 🔥 Overview
+
+**Biterunner** is a full-stack restaurant web application built for small restaurant owners, food startups, or solo chefs looking to manage their own online ordering system. Think Domino's-style—customers can place orders directly with the restaurant without relying on third-party platforms like Foodpanda or Uber Eats.
+
+<a href="https://biterunner.vercel.app">
+  <img src="https://raw.githubusercontent.com/ammarhashmi113/biterunner/refs/heads/main/frontend/public/android-chrome-512x512.png" alt="Biterunner logo" align="right" height="90" />
+</a>
+
+![Technologies Used](https://skillicons.dev/icons?i=react,nodejs,express,mongodb,tailwind,vercel,js)
+
+### 👤 Customer Features
+- Browse menu by category
+- View dish details in modals
+- Add to cart and checkout
+- Place and track orders
+- Manage account (register, login, change password)
+
+### 🛠️ Admin Features
+- Add/update/delete categories & menu items
+- Manage all customer orders
+- Secure admin panel access with JWT + role-based auth
 
 ---
 
 ## ⚙️ Tech Stack
 
--   **Frontend**: React + Vite + React Router
--   **Backend**: Node.js + Express
--   **Database**: MongoDB (Local for dev, will use Atlas for production)
--   **Auth**: JWT + Role-based Access (User/Admin)
--   **Image Uploads**: Cloudinary
--   **UI/UX**: TailwindCSS + React Hot Toast
--   **Deployment**:
-    -   Frontend: [Vercel](https://biterunner.vercel.app/)
-    -   Backend (Currently offline because of free-tier limits): [Render](https://campverse-booking-app.onrender.com/)
+- **Frontend**: React + Vite + React Router
+- **Backend**: Node.js + Express.js
+- **Database**: MongoDB (local for dev, Atlas planned for prod)
+- **Auth**: JWT with role-based access
+- **State Management**: React Context + localStorage
+- **Image Uploads**: Cloudinary
+- **UI/UX**: TailwindCSS + Lucide Icons + React Hot Toast
+- **Hosting**:
+  - Frontend: [Vercel](https://biterunner.vercel.app)
+  - Backend: Render (currently offline)
 
 ---
 
-## 🧩 Project Structure
+## 🚀 Live Demo
 
-```
-biterunner/
-├── frontend/
-│   └── src/
-│       ├── components/       # Shared and role-specific components
-│       ├── contexts/         # Global state (User, Cart)
-│       ├── pages/            # Route-based pages
-│       ├── utils/            # Axios config, auth helpers
-│       ├── App.jsx           # Main app with routes and guards
-│       └── main.jsx
-├── backend/
-│   ├── routes/               # Modular route files
-│   ├── models/               # Mongoose schemas
-│   ├── middlewares/         # Auth, validation, error handling
-│   ├── utils/                # Custom utilities (AppError, catchAsync, etc.)
-│   └── app.js
-```
+> 🖥️ [Click here to try Biterunner](https://biterunner.vercel.app)
+
+- Admin login available on request for recruiters 🧑‍💼
 
 ---
 
-## ✨ Features
+## 📸 Screenshots
 
-### 🧑 Users
+| Homepage | Menu Page |
+|---------|-----------|
+| ![Homepage](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/home-page.webp) | ![Menu Page](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/menu-page.webp) |
 
--   Register, login, and persist sessions via JWT
--   Browse menu items by category
--   Add items to cart, checkout, and view order history
--   Update profile and change password
+### Food Ordering
 
-### 👨‍🍳 Admins
+| Cart Sidebar | Cart Page |
+|------------|------------------|
+| ![Cart Sidebar](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/cart-sidebar.png) | ![Cart Page](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/cart-page.png) |
 
--   Add, edit, and delete menu categories and items (with Cloudinary image management)
--   Manage all user orders and update their status
--   Access admin-only dashboard and protected routes
+| Checkout Page | Order Confirmation Page |
+|------------|------------------|
+| ![Checkout Page](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/checkout-page.png) | ![Order Confirmation Page](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/order-confirmation-page.png) |
 
----
+### Admin Pages
 
-## 🔐 Route Protection
+| Admin Dashboard | Admin Menu Management | Admin Orders Management |
+|------------|------------------|----------------|
+| ![Admin Dashboard](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/admin-dashboard-page.png) | ![Menu Management](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/admin-menu-management-page.webp) | ![Orders Management](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/admin-order-management-page.png) |
 
--   `RequireUser` for checkout, my orders, etc.
--   `RequireAdmin` for order/menu management
--   `RestrictAdmin` prevents admins from accessing user-only routes like cart
+### Admin CRUD
 
----
+| Add Menu Item | Edit Menu Item |
+|---------------|----------------|
+| ![Add Menu Item](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/admin-menu-item-add-modal.png) | ![Edit Menu Item](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/admin-menu-item-add-modal.png) |
 
-## 📦 API Overview
+| Add Menu Category | Edit Menu Category |
+|-------------------|--------------------|
+| ![Add Menu Category](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/admin-menu-category-add-modal.png) | ![Edit Menu Category](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/admin-menu-category-edit-modal.png) |
 
-### Auth (`/api/auth`)
+### Auth + Order History
 
--   `POST /register`, `POST /login`, `POST /change-password`
--   `GET /me`, `PATCH /me`
+| Login | Register | My Orders |
+|------------|------------------|----------------|
+| ![Login Page](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/login-page.png) | ![Register Page](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/register-page.png) | ![My Orders](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/my-orders-page.png) |
 
-### Menu (`/api/menu`)
-
--   CRUD on categories and items (admin only for write routes)
-
-### Orders (`/api/orders`)
-
--   Users can create/view their orders
--   Admins can view/update all orders
-
----
-
-## 🌐 Environment Variables
-
-### Backend (`backend/.env`)
-
-```
-MONGO_URI=mongodb://127.0.0.1:27017/biterunner
-PORT=3000
-JWT_SECRET=your-secret
-CLOUDINARY_API_KEY=...
-CLOUDINARY_API_SECRET=...
-```
-
-### Frontend (`frontend/.env`)
-
-```
-VITE_API_BASE_URL=http://localhost:3000/api
-```
+| Profile Page | Profile Edit | Change Password |
+|------------|------------------|----------------|
+| ![Profile Page](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/my-profile-page.png) | ![Profile Edit Page](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/my-profile-edit-page.png) | ![Change Password Page](https://raw.githubusercontent.com/ammarhashmi113/biterunner/main/frontend/public/screenshots/change-password-page.png) |
 
 ---
 
-## 🛠️ Local Development
+## 🧑‍💻 Run Locally
 
-### 1. Clone the Repo
+### 🔧 Prerequisites
+- Node.js >= 18
+- MongoDB (running locally or Atlas URI)
 
+### 📦 Installation
 ```bash
+# Clone the repo
 git clone https://github.com/ammarhashmi113/biterunner.git
 cd biterunner
-```
 
-### 2. Install and Run Backend
-
-```bash
+# Install backend dependencies
 cd backend
 npm install
-node app.js
-```
 
-### 3. Install and Run Frontend
+# Create a `.env` file in backend/
+# Example:
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/biterunner
+JWT_SECRET=your_jwt_secret
+CLOUDINARY_CLOUD_NAME=your_cloud
+CLOUDINARY_API_KEY=your_key
+CLOUDINARY_API_SECRET=your_secret
 
-```bash
+# Run the backend
+npm run dev
+
+# Open a new terminal and install frontend dependencies
 cd ../frontend
 npm install
+
+# Run the frontend
 npm run dev
 ```
 
-Your app will now be running at:
-
--   Frontend: [http://localhost:5173](http://localhost:5173)
--   Backend: [http://localhost:3000](http://localhost:3000)
+Visit: `http://localhost:5173`
 
 ---
 
-## 🧠 Future Ideas
+## 📂 Project Structure
+```
+biterunner/
+├── backend/        # Express API
+├── frontend/       # React client
+└── README.md
+```
 
--   Payment integration
--   Role-specific dashboards
--   Better error UI & fallback routes
--   Unit + integration testing
+---
+
+## 💡 Future Improvements
+- Payment gateway integration
+- Order tracking with delivery ETA
+- Email notifications
+- Better admin analytics
+
+---
+
+## 📬 Feedback & Contributions
+
+Found a bug or want to suggest a feature?
+
+- ⭐ Star the repo if you like the project!
+- 📢 [Create an issue](https://github.com/ammarhashmi113/biterunner/issues)
+- 🤝 Pull requests are welcome
 
 ---
 
 ## 📄 License
 
-MIT License
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## ✍️ Author
-
-Made with passion by [Ammar Hashmi](https://github.com/ammarhashmi113)
+Made with ❤️ by [Ammar Hashmi](https://github.com/ammarhashmi113)
