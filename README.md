@@ -120,15 +120,15 @@ npm install
 
 # Create a `.env` file in backend/
 # Example:
-PORT=5000
-MONGO_URI=mongodb://localhost:27017/biterunner
+PORT=3000
+MONGO_URI=your_mongo_uri
 JWT_SECRET=your_jwt_secret
 CLOUDINARY_CLOUD_NAME=your_cloud
 CLOUDINARY_API_KEY=your_key
 CLOUDINARY_API_SECRET=your_secret
 
 # Run the backend
-npm run dev
+node app.js
 
 # Open a new terminal and install frontend dependencies
 cd ../frontend
