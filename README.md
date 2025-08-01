@@ -44,7 +44,7 @@
 - **UI/UX**: TailwindCSS + Lucide Icons + React Hot Toast
 - **Hosting**:
   - Frontend: [Vercel](https://biterunner.vercel.app)
-  - Backend: Render (currently offline)
+  - Backend: [Render](https://biterunner.onrender.com/)
 
 ---
 
