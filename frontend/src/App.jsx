@@ -21,7 +21,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import ProtectedRoute from "./components/Common/ProtectedRoute";
 import ScrollToTop from "./components/ScrollToTop";
-import FirstVisitModal from "./components/FirstVisitModal";
+// import FirstVisitModal from "./components/FirstVisitModal";
 
 // Pages
 import LandingPage from "./pages/LandingPage/LandingPage";
@@ -76,8 +76,8 @@ function App() {
                     <div className="flex flex-col min-h-screen">
                         <Navbar />
 
-                        {/* Showing backend API down notice modal for first-time visitors */}
-                        <FirstVisitModal />
+                        {/* I hit Render's API free usage limit and had to show backend API down notice modal for first-time visitors */}
+                        {/* <FirstVisitModal /> */}
 
                         <main className="flex-1">
                             <Routes>
