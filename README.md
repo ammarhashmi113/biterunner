@@ -6,9 +6,7 @@
 [![Tech Stack](https://img.shields.io/badge/stack-MERN-blue)](#-tech-stack)
 
 ![Biterunner Screenshot](https://raw.githubusercontent.com/ammarhashmi113/biterunner/refs/heads/main/frontend/public/og-image.png)
-
-> **Note**: Backend APIs are currently offline due to Render's free-tier limits. You can still explore the frontend and run the full-stack app locally.
-
+<!-- > **Note**: Backend APIs are currently offline due to Render's free-tier limits. You can still explore the frontend and run the full-stack app locally. -->
 ---
 
 ## 🔥 Overview
